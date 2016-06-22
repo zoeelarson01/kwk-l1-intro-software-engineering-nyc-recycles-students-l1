@@ -2,14 +2,14 @@ require 'open-uri'
 require 'json'
 require 'pry'
 require 'openssl'
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE 
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 require 'spec_helper.rb'
 
-describe 'nyc recycles' do 
+describe 'nyc recycles' do
 
   before(:each) do
-  
+
     raw_data = open("https://data.cityofnewyork.us/resource/sxx4-xhzg.json").read
 
     parsed_data = JSON.parse(raw_data)
@@ -39,22 +39,22 @@ describe 'nyc recycles' do
   describe '#all_keys' do
     it 'prints out all the keys in the hash using the each_keys method so you know what data points you have' do
       output = capture_stdout { all_keys(@third_recycling_bin) }
-      expect(output).to eq "address\nsite_type\nlongitude\nborough\nlatitude\npark_site_name\n"
+      expect(output).to eq "address\nsite_type\nlatitude\npark_site_name\nborough\nlongitude\n"
     end
   end
 
   describe '#all_data' do
     it 'prints all the values of the hash so we can see the pieces of data using the each_value method' do
       output = capture_stdout { all_data(@second_recycling_bin) }
-      expect(output).to eq "Allerton Ave & Moshulu Pkway\nSubproperty\n-73.8771283938\nBronx\n40.8488907878\nAllerton Ballfields\n"
+      expect(output).to eq "Allerton Ave & Moshulu Pkway\nSubproperty\n40.8488907878\nAllerton Ballfields\nBronx\n-73.8771283938\n"
     end
   end
 
   describe '#key_and_data' do
     it 'prints the key and the data' do
       output = capture_stdout { key_and_data(@fourth_recycling_bin) }
-      expect(output).to eq  "The address is 895 Shore Road, Pelham Bay Park\nThe site_type is Outdoor \nThe longitude is -73.805549\nThe borough is Bronx\nThe latitude is 40.871864\nThe park_site_name is Barstow Mansion\n"
+      expect(output).to eq  "The address is 895 Shore Road, Pelham Bay Park\nThe site_type is Outdoor \nThe latitude is 40.871864\nThe park_site_name is Barstow Mansion\nThe borough is Bronx\nThe longitude is -73.805549\n"
     end
   end
-  
+
 end
