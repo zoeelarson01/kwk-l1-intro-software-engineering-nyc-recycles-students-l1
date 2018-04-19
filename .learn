@@ -6,3 +6,5 @@ languages:
   - ruby
 type:
   - lab
+
+parent_template: git@github.com:learn-co-curriculum/upperline-hs-intro-software-engineering-nyc-recycles.git
