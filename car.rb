@@ -23,4 +23,4 @@ def paint = (new_color)
   @color = new_color
 end
 
-def initialize
+initialize.new
