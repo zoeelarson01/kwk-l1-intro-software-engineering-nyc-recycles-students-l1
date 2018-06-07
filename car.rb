@@ -23,4 +23,4 @@ def paint = (new_color)
   @color = new_color
 end
 
-initialize.new
+@odometer initialize.new
